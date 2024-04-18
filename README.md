@@ -1,2 +1,2 @@
-# SPEECH RECOGNITION
+# SPEECH RECOGNITION 💬
 Speech Recognition Application using Flask
