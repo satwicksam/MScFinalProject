@@ -1,0 +1,8 @@
+flask
+git+https://github.com/openai/whisper.git 
+librosa
+moviepy
+textblob
+pycountry
+zipfile36
+# os

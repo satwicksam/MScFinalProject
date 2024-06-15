@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="/static/images/logo.png" type="image/icon type">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Speech Recognition</title>
+</head>
+
+<body>
+    <div class="main_page">
+        <!-- <div class="logo_back">
+            <img src="/static/images/logo.png" class="logo">
+        </div> -->
+        <div class="header_text">Speech Recognition</div>
+        <form action="/speech-recognition" method="post" enctype="multipart/form-data">
+            <div class="choice">
+                <label for="choice">Select input type: </label>
+                <select name="choice" class="choice_list" id="choice_list" required>
+                    <option value="">-- Input Type --</option>
+                    <option value="ar">Audio</option>
+                    <option value="vr">Video</option>
+                </select>
+            </div><br>
+            <input type="file" name="upfile" required accept="audio/*, video/*" class="btn1">
+            <input type="submit" value="Recognize" name="run" class="btn" onclick="check_tm()"><br>
+        </form>
+
+        <form action="/record-voice" method="post">
+            <div class="rv">
+                Want to record your voice? <input type="submit" value="Click Here" name="rv" class="rv-btn"><br>
+            </div>
+        </form>
+
+        <form action="/srmf" method="post">
+            <div class="rv">
+                Want to work with multiple file? <input type="submit" value="Click Here" name="srmf" class="rv-btn">
+            </div>
+        </form>
+
+        <div>
+            <div class="dec_lan">{{ language }}</div>
+            <div class="dec_sen">{{ sentiment }}</div>
+            <div class="output">
+                <video controls="controls" preload="preload" class="media_output">
+                    <source src="{{ media }}" type="video/mp4">
+                    </source>
+                </video>
+                <div class="text_output">
+                    <div class="dec_txt_txt">
+                        <h3>Detected Text:</h3>
+                    </div>
+                    <textarea id="out_text" placeholder="Output will show here..">{{ text }}</textarea>
+                </div>
+            </div><br>
+            <div class="func_btn">
+                <button onclick="copyText()" class="btn"><i class="fa fa-copy"></i> Copy Text</button>
+                <button onclick="downloadCSV()" class="btn"><i class="fa fa-download"></i> Download Output
+                    File</button><br>
+            </div>
+        </div>
+
+    </div>
+
+    
+
+    <script>
+        function copyText() {
+            var copyText = document.getElementById("out_text");
+            copyText.select();
+            navigator.clipboard.writeText(copyText.value);
+            alert("Copied...!");
+        }
+
+        function downloadCSV() {
+            var text = document.getElementById("out_text").value;
+            var filename = "output.txt";
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+    </script>
+</body>
+
+</html>

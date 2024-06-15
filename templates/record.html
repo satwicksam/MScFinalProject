@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style-record.css">
+    <title>Audio Recorder</title>
+</head>
+<body>
+    <div class="holder">
+        <div class="header-text">Audio Recorder</div>
+        <div class="container">
+            <audio id="audioPlayer" class="AP" controls></audio><br>
+            <div class="buttons">
+                <button id="recordButton">Record</button>
+                <button id="stopButton" disabled>Stop</button>
+                <button id="playButton" disabled>Play</button>
+                <button id="downloadButton" disabled>Download</button>
+            </div>
+        </div><br>
+        <button onclick="history.back()" class="bmp-btn">BACK TO MAIN PAGE</button>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const recordButton = document.getElementById('recordButton');
+            const stopButton = document.getElementById('stopButton');
+            const playButton = document.getElementById('playButton');
+            const downloadButton = document.getElementById('downloadButton');
+            const audioPlayer = document.getElementById('audioPlayer');
+
+            let audioContext;
+            let audioRecorder;
+
+            recordButton.addEventListener('click', startRecording);
+            stopButton.addEventListener('click', stopRecording);
+            playButton.addEventListener('click', playAudio);
+            downloadButton.addEventListener('click', downloadAudio);
+
+            function startRecording() {
+                navigator.mediaDevices.getUserMedia({ audio: true })
+                    .then(stream => {
+                        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                        const input = audioContext.createMediaStreamSource(stream);
+                        audioRecorder = new Recorder(input);
+                        audioRecorder.record();
+                        toggleButtons(true);
+                    })
+                    .catch(error => console.error('Error accessing microphone:', error));
+            }
+
+            function stopRecording() {
+                audioRecorder.stop();
+                audioContext.close().then(() => {
+                    audioContext = null;
+                    toggleButtons(false);
+                });
+            }
+
+            function playAudio() {
+                audioRecorder.exportWAV(blob => {
+                    const audioUrl = URL.createObjectURL(blob);
+                    audioPlayer.src = audioUrl;
+                });
+            }
+
+            function downloadAudio() {
+                audioRecorder.exportWAV(blob => {
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = URL.createObjectURL(blob);
+                    downloadLink.download = 'recorded_audio.wav';
+                    downloadLink.click();
+                });
+            }
+
+            function toggleButtons(isRecording) {
+                recordButton.disabled = isRecording;
+                stopButton.disabled = !isRecording;
+                playButton.disabled = isRecording;
+                downloadButton.disabled = isRecording;
+            }
+        });
+    </script>
+    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+</body>
+</html>

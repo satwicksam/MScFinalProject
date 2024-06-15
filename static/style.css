@@ -1,0 +1,271 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+
+body{
+    background-color: black;
+    /* background-image: url("/static/images/background.mp4"); */
+}
+
+.main_page{
+    height: auto;
+    width: auto;
+    padding: 2%;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: gray;
+    box-shadow: 1px 1px 100px gray;
+    border-radius: 30px;
+    background-size: cover;
+    text-align: center;
+}
+
+.main_page-2{
+    height: 500px;
+    width: 750px;
+    padding: 2%;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: gray;
+    box-shadow: 1px 1px 100px gray;
+    border-radius: 30px;
+    background-size: cover;
+    text-align: center;
+}
+
+.header_text{
+    height: auto;
+    padding: 1%;
+    /* border: 1px solid black; */
+    border-radius: 20px;
+    /* box-shadow: 2px 2px 5px black; */
+    text-align: center;
+    margin: 0 0 3% 0;
+    font-size: x-large;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    background-color: orange;
+}
+
+
+.output{
+    display: grid; 
+    grid-template-columns: 1fr 2fr; 
+    grid-gap: 2%; 
+    width: 100%;
+    vertical-align: middle;
+}
+
+.output-2{
+    display: grid; 
+    /* grid-template-columns: 1fr 2fr;  */
+    /* grid-gap: 2%;  */
+    width: 100%;
+    height: 250px;
+    vertical-align: middle;
+}
+
+.media_output{
+    margin: 1%; 
+    display: inline-block;
+    height: 150px;
+    width: 300px;
+}
+
+.text_output{
+    margin: 1%; 
+    display: inline-block; 
+    text-align: left;
+}
+
+.mul_text_output{
+    height: 200px;
+    margin: 3%;
+}
+
+.dec_lan{
+    height: auto;
+    width: 90%;
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0), rgba(0, 255, 0, 0.5), rgba(255, 255, 255, 0));
+    margin: 1% 0;
+    display: inline-block;
+    text-align: center;
+}
+
+.dec_sen{
+    height: auto;
+    width: 90%;
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0), rgba(0, 255, 0, 0.5), rgba(255, 255, 255, 0));
+    margin: 1% 0;
+    display: inline-block;
+    text-align: center;
+}
+
+.choice{
+    height: auto;
+    width: auto;
+    padding: 2%;
+    text-align: center;
+    font-size: large;
+    font-family: monospace;
+    font-weight: bolder;
+    color: orange;
+    margin-bottom: -2%;
+}
+
+.choice_list{
+    height: auto;
+    width: auto;
+    padding: 1%;
+    text-align: center;
+    font-size: large;
+    font-family: monospace;
+    font-weight: bolder;
+    background-color: black;
+    color: white;
+}
+
+.btn{
+    height: auto;
+    width: 45%;
+    padding: 2%;
+    margin: 3% 2%;
+    font-size: large;
+    font-family: monospace;
+    font-weight: bolder;
+    background-image: linear-gradient(65deg, orange, rgb(255, 94, 0));
+    color: white;
+    text-shadow: .3px .3px 10px whitesmoke;
+    border-radius: 30px;
+    border: none;
+}
+
+.btn:hover{
+    cursor: pointer;
+    background-image: linear-gradient(65deg, rgb(255, 94, 0), orange);
+    box-shadow: 5px 5px 8px black;
+}
+
+.dec_txt_txt{
+    padding: 1%;
+    background-image: linear-gradient(90deg, rgba(255, 165, 0, 0.638), transparent);
+    height: auto;
+    width: auto;
+}
+
+#out_text{
+    height: 70%;
+    width: 97%;
+    outline: none;
+    padding: 1%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+
+.btn1{
+    height: auto;
+    width: 40%;
+    margin: 3% 2%;
+    font-size: large;
+    font-family: monospace;
+    font-weight: bolder;
+    padding: 0 3%;
+}
+.btn1:hover{
+    cursor: pointer;
+}
+
+.func_btn{
+    width: 100%;  
+    display: inline-flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+input[type="file"]::file-selector-button {
+    height: auto;
+    width: auto;
+    padding: 3%;
+    margin: 0 3% 0 0;
+    font-size: large;
+    font-family: monospace;
+    font-weight: bolder;
+    background-color: black;
+    color: white;
+}
+  
+input[type="file"]::file-selector-button:hover {
+    cursor: pointer;
+}
+
+.version{
+    font-size: small;
+    text-align: right;
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+    color: white;
+}
+
+.copyright{
+    font-size: small;
+    text-align: left;
+    position: absolute;
+    bottom: 1%;
+    left: 1%;
+    color: white;
+}
+
+.logo_back{
+    background-image: linear-gradient(30deg, rgba(255, 255, 255, 0), rgb(255, 255, 255), rgba(255, 255, 255, 0));
+    border-radius: 50px;
+    margin-bottom: 1%;
+    padding: 1%;
+    cursor: pointer;
+}
+
+.logo{
+    width: 8%;
+}
+
+.sm-btn{
+    height: auto;
+    width: 100%;
+    padding: 3%;
+    margin: 3% 0;
+    border-radius: 30px;
+    font-size: large;
+    font-family: monospace;
+    font-weight: bolder;
+    background-color: black;
+    color: white;
+}
+
+.sm-btn:hover{
+    cursor: pointer;    
+}
+
+.rv-btn{
+    height: auto;
+    width: auto;
+    padding: 2px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.rv{
+    margin-bottom: 5px;
+    font-size: 17px;
+    border: 1px dotted red;
+    padding: 5px 0;
+    border-radius: 20px;
+    background-image: linear-gradient(rgba(255, 255, 0, 0.5), rgba(255, 255, 0, 0.5));
+}
